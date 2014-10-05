@@ -1,0 +1,9 @@
+{
+	"require": {
+		"symfony/browser-kit": "~2.1",
+        "symfony/css-selector": "~2.1",
+        "symfony/dom-crawler": "~2.1",
+        "guzzlehttp/guzzle": ">=4,<6",
+        "fabpot/goutte": "~2.0"
+	}
+}
