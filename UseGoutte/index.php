@@ -5,7 +5,14 @@ require 'GoutteWrapper.php';
 $GoutteWrapper = new GoutteWrapper();
 
 try {
-	echo $GoutteWrapper->getTitle();
+	$title = $GoutteWrapper->getTitle();
+	$image = $GoutteWrapper->getMetaImage();
 } catch (Exception $e) {
-	echo 'error';
+	$title = 'error';
+	$image = null;
+}
+
+echo $title;
+if (!empty($image)) {
+	echo "<br><img src='{$image}' alt='{$title}'>";
 }
