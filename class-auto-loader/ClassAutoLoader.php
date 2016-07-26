@@ -1,19 +1,14 @@
 <?php
 class ClassAutoLoader
 {
-	private static $dirs = array();
+	private static $dirs = [];
 
-	public function __construct()
+	public function __construct($path = null)
 	{
+		if (is_array($path)) {
+			self::$dirs = $path;
+		}
 		spl_autoload_register(array($this, 'loader'));
-	}
-
-	public function register()
-	{
-		self::$dirs = array(
-			__DIR__ . '/controllers/',
-			__DIR__ . '/models/',
-		);
 	}
 
 	public static function loader($classname)
@@ -27,5 +22,8 @@ class ClassAutoLoader
 		}
 	}
 }
-$ClassAutoLoader = new ClassAutoLoader();
-$ClassAutoLoader->register();
+
+$ClassAutoLoader = new ClassAutoLoader([
+	'controllers' => __DIR__ . '/controllers/',
+	'models'      => __DIR__ . '/models/',
+]);
