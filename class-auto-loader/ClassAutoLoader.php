@@ -8,7 +8,7 @@ class ClassAutoLoader
 		if (is_array($path)) {
 			self::$dirs = $path;
 		}
-		spl_autoload_register(array($this, 'loader'));
+		spl_autoload_register([$this, 'loader']);
 	}
 
 	public static function loader($classname)

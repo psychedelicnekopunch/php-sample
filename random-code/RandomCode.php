@@ -1,7 +1,8 @@
 <?php
+
 class RandomCode
 {
-	private static $randomData = array(
+	private static $randoms = array(
 		'all'  => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
 		'str'  => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 		'strL' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -9,31 +10,32 @@ class RandomCode
 		'num'  => '0123456789',
 	);
 
-	private static $type   = 'all';
-
-	public static function get($len, $len2)
+	/**
+	 * ランダムな文字列を取得する
+	 *
+	 * @param int min 最小文字数
+	 * @param int max 最大文字数
+	 * @param string type [all, str, strS, strL, num]
+	 * @return string
+	 */
+	public static function get($min, $max, $type = null)
 	{
 		$result = '';
 
-		$len = (!empty($len) && $len > 0) ? intval($len) : 6;
-		$len = (!empty($len2) && $len < $len2) ? mt_rand($len , $len2) : $len;
+		$min = (!empty($min) && $min > 0) ? intval($min) : 6;
+		$cnt = (!empty($max) && $min < $max) ? mt_rand($min , $max) : $min;
 
-		$data = self::$randomData[self::$type];
+		$type = (!empty(self::$randoms[$type])) ? $type : 'all';
 
-		$arr = preg_split("//" , $data);
-		$arr = array_filter($arr , 'strlen');
-		$arr = array_values($arr);
+		$randoms = preg_split("//" , self::$randoms[$type]);
+		$randoms = array_filter($randoms , 'strlen');
+		$randoms = array_values($randoms);
 
-		$strCnt = count($arr) - 1;
+		$randomCnt = count($randoms) - 1;
 
-		for ($i = 0; $i < $len; $i++) {
-			$result = "{$result}{$arr[mt_rand(0,$strCnt)]}";
+		for ($i = 0; $i < $cnt; $i++) {
+			$result = "{$result}{$randoms[mt_rand(0, $randomCnt)]}";
 		}
 		return $result;
-	}
-
-	public static function set($type)
-	{
-		self::$type = (!empty(self::$randomData[$type])) ? $type : 'all';
 	}
 }
