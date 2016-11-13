@@ -5,4 +5,4 @@ $type = (!empty($_GET['type'])) ? htmlspecialchars($_GET['type'] , ENT_QUOTES) :
 
 include 'RandomCode.php';
 
-echo RandomCode::get($len, $len2, $type);
+echo RandomCode::get($len, $len2, $type)."\n";

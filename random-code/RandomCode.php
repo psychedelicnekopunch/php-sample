@@ -7,7 +7,7 @@ class RandomCode
 		'str'  => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 		'strL' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 		'strS' => 'abcdefghijklmnopqrstuvwxyz',
-		'num'  => '0123456789',
+		'int'  => '0123456789',
 	);
 
 	/**
@@ -15,7 +15,7 @@ class RandomCode
 	 *
 	 * @param int min 最小文字数
 	 * @param int max 最大文字数
-	 * @param string type [all, str, strS, strL, num]
+	 * @param string type [all, str, strS, strL, int]
 	 * @return string
 	 */
 	public static function get($min, $max, $type = null)
