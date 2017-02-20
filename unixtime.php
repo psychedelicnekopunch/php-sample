@@ -40,3 +40,6 @@ array(11) {
   int(1443081279)
 }
 */
+
+var_dump(strtotime('today'));
+var_dump(strtotime('today') + (60*60*24*180) - 1);
