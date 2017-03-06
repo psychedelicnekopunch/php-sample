@@ -38,6 +38,24 @@ class Test
 	}
 }
 
+class Child extends Test
+{
+	public function __construct($id)
+	{
+		parent::__construct($id);
+	}
+
+	public function outputPublicId()
+	{
+		// ERROR: $publicId is not static
+		// $parent = parent::$publicId;
+		// echo "from parent: {$parent}\n";
+
+		// $this->publicId is working
+		echo "from this: {$this->publicId}\n";
+	}
+}
+
 $test  = new Test;
 $test2 = new Test;
 
@@ -50,5 +68,6 @@ var_dump($test->getPrivateId(), Test::$staticId);
 
 var_dump($test->funcTest());
 
-
+$child = new Child(10);
+$child->outputPublicId();
 ?>
