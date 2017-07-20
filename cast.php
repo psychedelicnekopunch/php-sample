@@ -33,4 +33,9 @@ var_dump((array) null);
 var_dump((object) null);
 
 echo "---------------\n";
+
+var_dump((int) false);
+var_dump((int) true);
+
+echo "---------------\n";
 ?>
