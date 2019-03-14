@@ -26,6 +26,9 @@ class a8
 		if (!$this->isValidPriority($priority)) {
 			throw new Exception("priority must be 1 to 5", 400);
 		}
+		if (empty(trim($html))) {
+			return;
+		}
 		$this->htmls[] = [
 			'priority' => $priority,
 			'code' => $html,
@@ -37,6 +40,9 @@ class a8
 	{
 		if (!$this->isValidPriority($priority)) {
 			throw new Exception("priority must be 1 to 5", 400);
+		}
+		if (empty(trim($html))) {
+			return;
 		}
 		$this->amps[] = [
 			'priority' => $priority,
